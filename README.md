@@ -12,11 +12,44 @@ The system designs follows the following **design principles**:
 
 Anyone with making knowledge in electronics and programming can build their own cBlocks and provide it to the community. Below are two examples of cBlocks we have built. A button sensor (left) and a vibration motor (right). There are no restrictions, e.g. we also build a kitchen scale cBlock. You are only limited by your imagination!
 
+TODO: Bilder
+
 This document is step-by-step workshop to get started with cBlocks. The first part explains how to create a cBlock and set up the infrastructure to get going. The second part describes how the previously built cBlock can be used. As an example, a vibration cBlock is implemented, which is controlled by Google Assistant. 
 
 ## Make Them
+
+In this section we will explain how to build a vibration motor cBlock and how to set up the infrastructure to get started.
+
 ### Architecture
-### cBlock 
+
+The following picture illustrates the high-level architecture of cBlocks:
+
+TODO Bild.
+
+#### cBlocks
+These are the core building blocks used to sense and control the physical world. E.g. a temperature sensor, a button or a vibration motor.
+
+### Visualizer
+The Visualizer is a web application meant to display sensor data and control cBlock actuators. It reads meta data
+from the backend in order to detect which cBlocks are online and it receives current sensor readings via MQTT. The
+state of a cBlock is visualized by user interface controls that depend on the data to be visualized or controlled. Furthermore, there is a data mapping feature. This way a user can attach semantic meaning to generic sensor readings; e. g. certain temperature ranges could be mapped to Cold and Hot, which allows for a more natural language.
+
+### Bridge
+In order to connect cBlocks to the Internet we provide the Bridge component, which is currently implemented using a
+Raspberry Pi 3. The Bridge communicates with the individual cBlocks via Wi-Fi (IEEE 802.11n). The Bridge allows for
+minimal configuration since it offers a pairing mechanism for local cBlocks. Network credentials are exchanged between
+the Bridge and cBlocks in order to connect the cBlocks with the network. An [audio protocol](https://github.com/weckbach/AstroMech) has been developed to broadcast the credentials to all nearby cBlocks.
+
+### Backend
+The Backend is responsible for command/response handling, providing meta data about the cBlocks and semantic
+mappings of readings and commands. Command/response handling is necessary because the MQTT protocol does not
+provide any request/response model off the shelf. For instance, if the Visualizer sends a “turn off” command to the
+RGB-LED, the Backend must check if the request has the correct format and respond with a timeout error message if the cBlock does not react timely. The Backend also provides meta data about the specific cBlocks. For example, the Visualizer reads which resources a cBlock provides, as well as which data type and units those resources use, in order to display them correctly. The temperature and humidity sensor for instance, has two numerical resources Temperature and Relative Humidity.
+
+### MQTT broker
+The MQTT broker is used as a message bus, exchanging real-time sensor readings and actuator commands to and from the cBlocks. TThe MQTT Broker provides the means to connect any third-party software to the system, since it is an established standard in the IoT field.
+
+### Make a cBlock 
 #### Hardware
 - Schaltplan cBlock
 - Schaltplan Protoboard
@@ -31,6 +64,8 @@ This document is step-by-step workshop to get started with cBlocks. The first pa
 - (Button)
 #### Raspbian Image Link
 ### Backend
+#### Start
+#### Create an entry in the registry
 ### Visualizer
 ## Use Them
 1. Bridge
