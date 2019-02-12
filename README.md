@@ -97,11 +97,26 @@ Lets bring the cBlock to live! We developed a cBlocks Arduino SDK(TODO Link) tha
 If you installed Platfrom IO on the CLI you can run `pio run -t upload` to upload the code to the cBlock. Otherwise follow the instructions for your IDE to upload the code. The cBlock won't work yet, because it needs at least the Bridge component to function.
 
 ### Bridge
+The cBlocks Bridge has several functions:
+- Wireless Access Point
+- Gateway to the Internet
+- MQTT-Bridge
+- Provides pairing mechanism that makes configuration of cBlocks super easy.
+
 #### Hardware
-- Speaker
-- Casing
-- (Button)
-#### Raspbian Image Link
+The hard of the Bridge is a [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/). It has ethernet and WiFi and can be used as a low budget Wireless Access Point with [Apache Kura](https://www.eclipse.org/kura/). For the Audio Pairing you need an active speaker. Unfortunately we haven't developed a version with a button yet, so the pairing has to be triggered via the console. We wrote an audio broadcast protocol called [AstroMech](https://github.com/weckbach/AstroMech) for cBlocks. Feel free to write a little script, that uses a button to trigger the pairing. Please refer to the this [script](https://raw.githubusercontent.com/weckbach/AstroMech/master/RaspberryPi/main.py) in the AstroMech repository, it documents how to make AstroMech compliant sounds. Connect the speaker via cinch to the Rasperry Pi and you are set. 
+
+#### Install Raspbian Image
+
+To make the set up of the Bridge as easy as possible we provide Raspbian image(TODO Link) that includes all dependencies. Please download and install it on a SD card. You can use Etcher to write the image on the SD Card. Here are the [instuctions](https://www.raspberrypi.org/documentation/installation/installing-images/) of the official Raspberry documentation. After inserting the SD card into the Raspberry Pi, it is ready to start.
+
+#### Network configuration
+Once the Raspberry Pi is started you should see a new wireless networks called `cblocks-gateway`. The default password is `admin`. TODO Kura config.
+
+After connecting to the network you can SSH onto the Pi via `ssh admin@172.16.1.1`. The password is again `admin`. 
+
+TODO MQTT Bridge config.
+
 ### Backend
 #### Start
 #### Create an entry in the registry
