@@ -92,7 +92,7 @@ TODO Bild.
 
 Lets bring the cBlock to live! We developed a cBlocks Arduino SDK(TODO Link) thats makes the development of cBlocks as easy as developing Arduino sketches. The Arduino SDK can only be used via [Platform IO](https://platformio.org/). It is an IDE for developing embedded systems. We use it because it has a proper dependency management system and the cBlocks IDE has quite a few dependencies. There are extensions for Visual Studio Code and Atom. After you installed Platform IO, please clone our sample code via:
 
-`git clone TODO URL && cd TODO`
+`git clone git@github.com:weckbach/cblocks-button.git && cd cblocks-button`
 
 If you installed Platfrom IO on the CLI you can run `pio run -t upload` to upload the code to the cBlock. Otherwise follow the instructions for your IDE to upload the code. The cBlock won't work yet, because it needs at least the Bridge component to function.
 
