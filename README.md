@@ -111,11 +111,16 @@ The hard of the Bridge is a [Raspberry Pi 3 Model B](https://www.raspberrypi.org
 To make the set up of the Bridge as easy as possible we provide Raspbian image(TODO Link) that includes all dependencies. Please download and install it on a SD card. You can use Etcher to write the image on the SD Card. Here are the [instuctions](https://www.raspberrypi.org/documentation/installation/installing-images/) of the official Raspberry documentation. After inserting the SD card into the Raspberry Pi, it is ready to start.
 
 #### Network configuration
-Once the Raspberry Pi is started you should see a new wireless networks called `cblocks-gateway`. The default password is `admin`. TODO Kura config.
 
-After connecting to the network you can SSH onto the Pi via `ssh admin@172.16.1.1`. The password is again `admin`. 
+Once the Raspberry Pi is started you should see a new wireless networks called `cblocks-gateway`. The default password is `admin`. To configure the WiFi password go to the web page http://172.16.1.1/kura. The credentils are again `admin:admin`. Go to `networks -> wlan0 -> wireless`, here you can change the password. If you can't reach the web page please refer to the troubleshooting section.
 
-TODO MQTT Bridge config.
+After connecting to the network you can SSH onto the Pi via `ssh admin@172.16.1.1`. The password is again `admin`.
+
+Now we have to configure the MQTT Bridge. Since we will use our desktop machine to host the backend, paste your IP address into the bridge config. Run `nano /etc/mosquitto/conf.d/bridge.conf` and exchange the IP address with yours. In linux systems you can find your IP adress by running `ifconfig`. Restart mosquitto by running `sudo service mosquitto restart`. 
+
+#### Troubleshooting
+
+Sometimes Kura does not work properly. SSH onto the Pi and run `sudo service kura restart`. After a while the service should be working and the Kura web page should be reachable again.
 
 ### Backend
 #### Start
