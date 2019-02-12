@@ -114,7 +114,7 @@ To make the set up of the Bridge as easy as possible we provide Raspbian image(T
 
 Once the Raspberry Pi is started you should see a new wireless networks called `cblocks-gateway`. The default password is `admin`. To configure the WiFi password go to the web page http://172.16.1.1/kura. The credentils are again `admin:admin`. Go to `networks -> wlan0 -> wireless`, here you can change the password. If you can't reach the web page please refer to the troubleshooting section.
 
-After connecting to the network you can SSH onto the Pi via `ssh admin@172.16.1.1`. The password is again `admin`.
+After connecting to the network you can SSH onto the Pi via `ssh pi@172.16.1.1`. The password is again `admin`.
 
 Now we have to configure the MQTT Bridge. Since we will use our desktop machine to host the backend, paste your IP address into the bridge config. Run `nano /etc/mosquitto/conf.d/bridge.conf` and exchange the IP address with yours. In linux systems you can find your IP adress by running `ifconfig`. Restart mosquitto by running `sudo service mosquitto restart`. 
 
