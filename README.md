@@ -56,7 +56,14 @@ Now, let's actually make our first cBlock.
 #### Hardware
 
 ##### cBlocks Board
-In order to get started with cblocks we first have to build the board. The cBlocks board is based on the [Adafruit Feather HUZZAH32 Dev Board](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/overview). It is an excellent dev board because it has a lot of nice features like the battery charger or the USB to serial converter. Since cBlocks need some more functionalites like a mircophone for pairing, a 5V booster, a status LED and some Buttons, we designed a board around the HUZZAH32. It's kind of a breakout of the breakout. You can find the schematics and the layout here (TODO link). Please order the board at your favorite PCB manufacturer. You can also export the parts list via Eagle and order the parts at your favorite store. As a microphone we use the [MEMS microphone](https://www.sparkfun.com/products/9868) from SparkFun. Also don't forget to order the Adafruit Feather HUZZAH32 itself.
+In order to get started with cblocks we first have to build the board. The cBlocks board is based on the [Adafruit Feather HUZZAH32 Dev Board](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/overview). It is an excellent dev board because it has a lot of nice features like the battery charger or the USB to serial converter. Since cBlocks need some more functionalites like a mircophone for pairing, a 5V booster, a status LED and some Buttons, we designed a board around the HUZZAH32. It's kind of a breakout of the breakout. You can find the schematics and the layout here (TODO link). Please order the board at your favorite PCB manufacturer. You can also export the parts list via Eagle and order the parts at your favorite store. Additionally you need the following parts:
+- A microphone. We use the [MEMS microphone](https://www.sparkfun.com/products/9868) from SparkFun. 
+- The Adafruit Feather HUZZAH32 itself. 
+- A LiPo battery. We use this [1000mAH battery](https://www.exp-tech.de/zubehoer/batterien-akkus/lipo-akkus/5801/lipo-akku-1000mah-3.7-v-2-mm-jst), because it fits well inside the casing.
+
+Once you have the board and all the parts you can start soldering it. The soldering ist pretty tough because the board includes some SMT pads and small parts. Here is how the soldered board looks like:
+
+TODO Bild.
 
 #### cBlocks Protoboard
 In addition to the cBlock board there is also a cBlocks protoboard. It a shield that is stacked on top of the cBlock board that has some labeled pin outs. It makes prototyping a little easier, so feel free to order that board as well.
@@ -76,7 +83,19 @@ Here is a photo of the final hook up:
 TODO Photo.
 
 #### Casing (optional)
+
+This step is optional, but gives your cBlock a more finished look. We use a laser cutter to do the casing. Here is the corresponding SVG file(TODO Link) for the vibration motor. This is how the final vibration motor cBlock looks like:
+
+TODO Bild.
+
 #### Arduino SDK
+
+Lets bring the cBlock to live! We developed a cBlocks Arduino SDK(TODO Link) thats makes the development of cBlocks as easy as developing Arduino sketches. The Arduino SDK can only be used via [Platform IO](https://platformio.org/). It is an IDE for developing embedded systems. We use it because it has a proper dependency management system and the cBlocks IDE has quite a few dependencies. There are extensions for Visual Studio Code and Atom. After you installed Platform IO, please clone our sample code via:
+
+`git clone TODO URL && cd TODO`
+
+If you installed Platfrom IO on the CLI you can run `pio run -t upload` to upload the code to the cBlock. Otherwise follow the instructions for your IDE to upload the code. The cBlock won't work yet, because it needs at least the Bridge component to function.
+
 ### Bridge
 #### Hardware
 - Speaker
