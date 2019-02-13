@@ -61,7 +61,7 @@ In order to get started with cblocks we first have to build the board. The cBloc
 - The Adafruit Feather HUZZAH32 itself. 
 - A LiPo battery. We use this [1000mAH battery](https://www.exp-tech.de/zubehoer/batterien-akkus/lipo-akkus/5801/lipo-akku-1000mah-3.7-v-2-mm-jst), because it fits well inside the casing.
 
-Once you have the board and all the parts you can start soldering it. The soldering ist pretty tough because the board includes some SMT pads and small parts. Here is how the soldered board looks like:
+Once you have the board and all the parts you can start soldering it. The soldering ist pretty tough because it includes small SMDs, so you should have some advanced soldering skills.
 
 TODO Bild.
 
@@ -123,13 +123,21 @@ Now we have to configure the MQTT Bridge. Since we will use our desktop machine 
 Sometimes Kura does not work properly. SSH onto the Pi and run `sudo service kura restart`. After a while the service should be working and the Kura web page should be reachable again.
 
 ### Backend
-#### Start
-#### Create an entry in the registry
+
+In this part we will set up the backend on your local desktop computer. Since the backend is completely dockerized, you should first intall Docker. Clone the backend repo via `git clone git@github.com:weckbach/cblocks-backend.git && cd cblocks-backend`. Copy or symlink the docker-compose config via `cp docker-compose.example.yml docker-compose.yml` or  `ln -s docker-compose.example.yml docker-compose.yml`. The compose file includes MongoDB for storing the data and Apache Mosquitto as the MQTT broker. Simply run `docker-compose up` (optionally -d to run in background") to start the backend and all the services needed.
+
+Since the Pi bridges all the MQTT traffic to your local MQTT broker you should see all the messages by running `mosquitto_sub -t '#' -v`. By now no messages should occur, since the cBlock is not conntected to the WiFi.
+
+Run `docker-compose exec app node src/mongo_bootstrap.js` to create all registry entries. Thus the Visualizer can get all the meta data about the vibration motor cBlock.
+
 ### Visualizer
-## Use Them
-1. Bridge
-2. Pairing
-3. Visualizer
-4. Turn On
-6. Define Mapping
-7. IFTTT
+
+## Usage
+
+In this section we will actually use our new cBlock by controlling it via the Visualizer. Using the cBlock will involve the following steps:
+
+1. Turn on the cBlock
+2. Pair the cBlock
+3. Control it via the Visualizer
+
+You can turn on the cBlock by pressing the left push button on the board (if the LED does not turn on, try holding the power button a little longer). The cBlock will now turn on and attempt to connect to the network. Since no credentials are provided yet, the LED will turn red, indicating that connecting failed. Press the right button to put the cBlock into pairing mode. The LED should turn blue. Now hold the microphone of the cBlock in front of the speaker of the Bridge (Raspberry Pi). To start the pairing SSH onto the Pi and run `cd && python cblocks/pairing.py 'cblocks-gateway:<your_password>'`.
