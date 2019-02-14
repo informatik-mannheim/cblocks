@@ -14,7 +14,7 @@ Anyone with making knowledge in electronics and programming can build their own 
 
 TODO: Bilder
 
-This document is step-by-step workshop to get started with cBlocks. The first part explains how to create a cBlock and set up the infrastructure to get going. The second part describes how the previously built cBlock can be used. As an example, a vibration cBlock is implemented, which is controlled by Google Assistant. 
+This document is step-by-step workshop to get started with cBlocks. The first part explains how to create a cBlock and set up the infrastructure to get going. The second part describes how the previously built cBlock can be used. As an example, we will implement vibration cBlock is implemented, that can be controlled via the UI or MQTT.
 
 ## Make Them
 
@@ -66,7 +66,7 @@ Once you have the board and all the parts you can start soldering it. The solder
 TODO Bild.
 
 #### cBlocks Protoboard
-In addition to the cBlock board there is also a cBlocks protoboard. It a shield that is stacked on top of the cBlock board that has some labeled pin outs. It makes prototyping a little easier, so feel free to order that board as well.
+In addition to the cBlock board there is also a cBlocks protoboard. It is a shield stacked on top of the cBlock board that has some labeled pin outs. It makes prototyping a little easier, so feel free to order that board as well.
 
 #### Vibration Motor Circuit
 For the vibration motor cicuit you need the [Vibrating Mini Motor Disc](https://www.adafruit.com/product/1201) and the [Adafruit DRV2605L Haptic Controller Breakout](https://learn.adafruit.com/adafruit-drv2605-haptic-controller-breakout/overview). Feel free to use any other vibration motor. The hook up is straight forward:
@@ -90,9 +90,9 @@ TODO Bild.
 
 #### Arduino SDK
 
-Lets bring the cBlock to live! We developed a cBlocks Arduino SDK(TODO Link) thats makes the development of cBlocks as easy as developing Arduino sketches. The Arduino SDK can only be used via [Platform IO](https://platformio.org/). It is an IDE for developing embedded systems. We use it because it has a proper dependency management system and the cBlocks IDE has quite a few dependencies. There are extensions for Visual Studio Code and Atom. After you installed Platform IO, please clone our sample code via:
+Lets bring the cBlock to live! We developed a cBlocks [Arduino SDK](https://github.com/weckbach/cblocks-arduino-sdk) thats makes the development of cBlocks as easy as developing Arduino sketches. The Arduino SDK can only be used via [Platform IO](https://platformio.org/). It is an IDE for developing embedded systems. We use it because it has a proper dependency management system and the cBlocks IDE has quite a few dependencies. There are extensions for Visual Studio Code and Atom. After you installed Platform IO, please clone our sample code via:
 
-`git clone git@github.com:weckbach/cblocks-button.git && cd cblocks-button`
+`git clone git@github.com:weckbach/cblocks-vibration-motor.git && cd cblocks-vibration-motor`
 
 If you installed Platfrom IO on the CLI you can run `pio run -t upload` to upload the code to the cBlock. Otherwise follow the instructions for your IDE to upload the code. The cBlock won't work yet, because it needs at least the Bridge component to function.
 
@@ -116,7 +116,7 @@ Once the Raspberry Pi is started you should see a new wireless networks called `
 
 After connecting to the network you can SSH onto the Pi via `ssh pi@172.16.1.1`. The password is again `admin`.
 
-Now we have to configure the MQTT Bridge. Since we will use our desktop machine to host the backend, paste your IP address into the bridge config. Run `nano /etc/mosquitto/conf.d/bridge.conf` and exchange the IP address with yours. In linux systems you can find your IP adress by running `ifconfig`. Restart mosquitto by running `sudo service mosquitto restart`. 
+Now we have to configure the MQTT Bridge. Since we will use our desktop machine to host the backend, paste your IP address into the bridge config. Run `nano /etc/mosquitto/conf.d/bridge.conf` and exchange the IP address with yours. In linux systems you can find your IP adress by running `ifconfig`. Restart mosquitto by running `sudo service mosquitto restart`. Note in a production environment the Backend would be hosted on a public accessible server in the Internet. 
 
 #### Troubleshooting
 
