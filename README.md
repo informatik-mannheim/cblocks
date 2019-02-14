@@ -138,8 +138,10 @@ In this section we will actually use our new cBlock by controlling it via the Vi
 
 1. Turn on the cBlock
 2. Pair the cBlock
-3. Control it via the Visualizer
+3. Control it via the Visualizer / MQTT
 
 You can turn on the cBlock by pressing the left push button on the board (if the LED does not turn on, try holding the power button a little longer). The cBlock will now turn on and attempt to connect to the network. Since no credentials are provided yet, the LED will turn red, indicating that connecting failed. Press the right button to put the cBlock into pairing mode. The LED should turn blue. Now hold the microphone of the cBlock in front of the speaker of the Bridge (Raspberry Pi). To start the pairing SSH onto the Pi and run `cd && python cblocks/pairing.py 'cblocks-gateway;admin'` (Note: If you changed the WiFi password, exchange admin with your password). After pairing the LED should yellow (connecting) and then green (connected). 
 
 #TODO Visualizer part
+
+Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/weckbach/cblocks-backend/wiki/Real-time). 
