@@ -24,7 +24,7 @@ In this section we will explain how to build a vibration motor cBlock and how to
 
 First of all lets introduce the cBlocks architecture. This will help you in understanding the individual building blocks of the system.
 
-TODO Bild.
+![cBlocks architecture](https://github.com/weckbach/cblocks/blob/master/pictures/architecture.png "cBlocks architecture")
 
 #### cBlocks
 These are the core building blocks used to sense and control the physical world. E.g. a temperature sensor, a button or a vibration motor.
