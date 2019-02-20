@@ -144,4 +144,4 @@ You can turn on the cBlock by pressing the left push button on the board (if the
 
 #TODO Visualizer part
 
-Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/weckbach/cblocks-backend/wiki/Real-time). 
+Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/weckbach/cblocks-backend/wiki/Real-time). Run `mosquitto_pub -t 'myClient/3307/0/0/input' -m '{"data": 100}'` to turn the motor to 100%.
