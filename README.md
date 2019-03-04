@@ -1,4 +1,7 @@
 # cBlocks
+
+![cBlocks](https://github.com/weckbach/cblocks/blob/master/pictures/vibration_and_button.JPG "cBlocks")
+
 cBlocks is a tool that empowers non-experts such as designers or electronics beginners to prototype the Internet of Things(IoT). Prototyping early ideas in the context of the Internet of Things is difficult. Building functional prototypes requires
 advanced knowledge in technologies like Internet connectivity, sensor hardware and low level programming. At the same time evaluating the user experience of early concepts is extreme valuable because best practices in design are missing for this emerging and rather unexplored design space. With our system we provide a rapid prototyping tool for Internet of Things applications that is tailored to the needs of non-expert users. We encapsulate hardware details and facilitate easy Internet connections. At the same time our system is open source and therefore ready to be used and extended by the DIY community.
 
@@ -10,9 +13,7 @@ The system designs follows the following **design principles**:
 - Internet Connectivity: Intuitive pairing mechanism between cBlocks and bridge.
 - Open Everything: New sensors or actuators can be added; external IoT products can be connected; built on an open hardware platform.
 
-Anyone with making knowledge in electronics and programming can build their own cBlocks and provide it to the community. Below are two examples of cBlocks we have built. A button sensor (left) and a vibration motor (right). There are no restrictions, e.g. we also build a kitchen scale cBlock. You are only limited by your imagination!
-
-TODO: Bilder
+Anyone with making knowledge in electronics and programming can build their own cBlocks and provide it to the community. Below are two examples of cBlocks we have built. A button sensor (left) and a vibration motor (right). There are no restrictions, e.g. we also build a kitchen scale cBlock. You are only limited by your imagination! On the top of the page are two example cBlocks, a vibration cBlock (left) and a button cBlock (right).
 
 This document is step-by-step workshop to get started with cBlocks. The first part explains how to create a cBlock and set up the infrastructure to get going. The second part describes how the previously built cBlock can be used. As an example, we will implement vibration cBlock is implemented, that can be controlled via the UI or MQTT.
 
@@ -63,7 +64,7 @@ In order to get started with cblocks we first have to build the board. The cBloc
 
 Once you have the board and all the parts you can start soldering it. The soldering ist pretty tough because it includes small SMDs, so you should have some advanced soldering skills.
 
-TODO Bild.
+Here is how the cBlocks board looks withouth the ESP32 ![cBlocks board](https://github.com/weckbach/cblocks/blob/master/pictures/cblocks_board.JPG "cBlocks board"). Next, here is how it looks like with the ESP32 soldered on top of it. ![cBlocks board with ESP](https://github.com/weckbach/cblocks/blob/master/pictures/cblocks_board_esp.JPG "cBlocks board with ESP")
 
 #### cBlocks Protoboard
 In addition to the cBlock board there is also a cBlocks protoboard. It is a shield stacked on top of the cBlock board that has some labeled pin outs. It makes prototyping a little easier, so feel free to order that board as well.
@@ -80,13 +81,13 @@ For the vibration motor cicuit you need the [Vibrating Mini Motor Disc](https://
 
 Here is a photo of the final hook up:
 
-TODO Photo.
+The proto hat with the vibration circuit on it, looks like this: ![Vibration proto hat](https://github.com/weckbach/cblocks/blob/master/pictures/vibration_proto_hat.JPG "Vibration proto hat")
 
 #### Casing (optional)
 
 This step is optional, but gives your cBlock a more finished look. We use a laser cutter to do the casing. Here is the corresponding SVG file(TODO Link) for the vibration motor. This is how the final vibration motor cBlock looks like:
 
-TODO Bild.
+Finally, the fully assembled cBlock looks like follows: ![Vibration cBlock](https://github.com/weckbach/cblocks/blob/master/pictures/vibration.JPG "Vibration cBlock")
 
 #### Arduino SDK
 
