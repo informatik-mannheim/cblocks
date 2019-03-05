@@ -1,6 +1,6 @@
 # cBlocks
 
-![cBlocks](https://github.com/weckbach/cblocks/blob/master/pictures/vibration_and_button.JPG "cBlocks")
+![cBlocks](pictures/vibration_and_button.JPG "cBlocks")
 
 cBlocks is a tool that empowers non-experts such as designers or electronics beginners to prototype the Internet of Things(IoT). Prototyping early ideas in the context of the Internet of Things is difficult. Building functional prototypes requires
 advanced knowledge in technologies like Internet connectivity, sensor hardware and low level programming. At the same time evaluating the user experience of early concepts is extreme valuable because best practices in design are missing for this emerging and rather unexplored design space. With our system we provide a rapid prototyping tool for Internet of Things applications that is tailored to the needs of non-expert users. We encapsulate hardware details and facilitate easy Internet connections. At the same time our system is open source and therefore ready to be used and extended by the DIY community.
@@ -25,7 +25,7 @@ In this section we will explain how to build a vibration motor cBlock and how to
 
 First of all lets introduce the cBlocks architecture. This will help you in understanding the individual building blocks of the system.
 
-![cBlocks architecture](https://github.com/weckbach/cblocks/blob/master/pictures/architecture.png "cBlocks architecture")
+![cBlocks architecture](pictures/architecture.png "cBlocks architecture")
 
 #### cBlocks
 These are the core building blocks used to sense and control the physical world. E.g. a temperature sensor, a button or a vibration motor.
@@ -57,14 +57,14 @@ Now, let's actually make our first cBlock.
 #### Hardware
 
 ##### cBlocks Board
-In order to get started with cblocks we first have to build the board. The cBlocks board is based on the [Adafruit Feather HUZZAH32 Dev Board](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/overview). It is an excellent dev board because it has a lot of nice features like the battery charger or the USB to serial converter. Since cBlocks need some more functionalites like a mircophone for pairing, a 5V booster, a status LED and some Buttons, we designed a board around the HUZZAH32. It's kind of a breakout of the breakout. You can find the schematics and the layout here (TODO link). Please order the board at your favorite PCB manufacturer. You can also export the parts list via Eagle and order the parts at your favorite store. Additionally you need the following parts:
+In order to get started with cblocks we first have to build the board. The cBlocks board is based on the [Adafruit Feather HUZZAH32 Dev Board](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/overview). It is an excellent dev board because it has a lot of nice features like the battery charger or the USB to serial converter. Since cBlocks need some more functionalites like a mircophone for pairing, a 5V booster, a status LED and some Buttons, we designed a board around the HUZZAH32. It's kind of a breakout of the breakout. You can find the schematics and the layout [here](https://github.com/informatik-mannheim/cblocks-arduino-sdk/tree/master/schematics). Please order the board at your favorite PCB manufacturer. You can also export the parts list via Eagle and order the parts at your favorite store. Additionally you need the following parts:
 - A microphone. We use the [MEMS microphone](https://www.sparkfun.com/products/9868) from SparkFun. 
 - The Adafruit Feather HUZZAH32 itself. 
 - A LiPo battery. We use this [1000mAH battery](https://www.exp-tech.de/zubehoer/batterien-akkus/lipo-akkus/5801/lipo-akku-1000mah-3.7-v-2-mm-jst), because it fits well inside the casing.
 
 Once you have the board and all the parts you can start soldering it. The soldering ist pretty tough because it includes small SMDs, so you should have some advanced soldering skills.
 
-Here is how the cBlocks board looks withouth the ESP32 ![cBlocks board](https://github.com/weckbach/cblocks/blob/master/pictures/cblocks_board.JPG "cBlocks board"). Next, here is how it looks like with the ESP32 soldered on top of it. ![cBlocks board with ESP](https://github.com/weckbach/cblocks/blob/master/pictures/cblocks_board_esp.JPG "cBlocks board with ESP")
+Here is how the cBlocks board looks withouth the ESP32 ![cBlocks board](pictures/cblocks_board.JPG "cBlocks board"). Next, here is how it looks like with the ESP32 soldered on top of it. ![cBlocks board with ESP](pictures/cblocks_board_esp.JPG "cBlocks board with ESP")
 
 #### cBlocks Protoboard
 In addition to the cBlock board there is also a cBlocks protoboard. It is a shield stacked on top of the cBlock board that has some labeled pin outs. It makes prototyping a little easier, so feel free to order that board as well.
@@ -81,19 +81,19 @@ For the vibration motor cicuit you need the [Vibrating Mini Motor Disc](https://
 
 Here is a photo of the final hook up:
 
-The proto hat with the vibration circuit on it, looks like this: ![Vibration proto hat](https://github.com/weckbach/cblocks/blob/master/pictures/vibration_proto_hat.JPG "Vibration proto hat")
+The proto hat with the vibration circuit on it, looks like this: ![Vibration proto hat](pictures/vibration_proto_hat.JPG "Vibration proto hat")
 
 #### Casing (optional)
 
-This step is optional, but gives your cBlock a more finished look. We use a laser cutter to do the casing. Here is the corresponding SVG file(TODO Link) for the vibration motor. This is how the final vibration motor cBlock looks like:
+This step is optional, but gives your cBlock a more finished look. We use a laser cutter to do the casing. Here is the corresponding [SVG file](https://github.com/informatik-mannheim/cblocks-vibration-motor/blob/master/caseplans.svg) for the vibration motor. This is how the final vibration motor cBlock looks like:
 
-Finally, the fully assembled cBlock looks like follows: ![Vibration cBlock](https://github.com/weckbach/cblocks/blob/master/pictures/vibration.JPG "Vibration cBlock")
+Finally, the fully assembled cBlock looks like follows: ![Vibration cBlock](pictures/vibration.JPG "Vibration cBlock")
 
 #### Arduino SDK
 
-Lets bring the cBlock to live! We developed a cBlocks [Arduino SDK](https://github.com/weckbach/cblocks-arduino-sdk) thats makes the development of cBlocks as easy as developing Arduino sketches. The Arduino SDK can only be used via [Platform IO](https://platformio.org/). It is an IDE for developing embedded systems. We use it because it has a proper dependency management system and the cBlocks IDE has quite a few dependencies. There are extensions for Visual Studio Code and Atom. After you installed Platform IO, please clone our sample code via:
+Lets bring the cBlock to live! We developed a cBlocks [Arduino SDK](https://github.com/informatik-mannheim/cblocks-arduino-sdk) thats makes the development of cBlocks as easy as developing Arduino sketches. The Arduino SDK can only be used via [Platform IO](https://platformio.org/). It is an IDE for developing embedded systems. We use it because it has a proper dependency management system and the cBlocks IDE has quite a few dependencies. There are extensions for Visual Studio Code and Atom. After you installed Platform IO, please clone our sample code via:
 
-`git clone git@github.com:weckbach/cblocks-vibration-motor.git && cd cblocks-vibration-motor`
+`git clone git@github.com:informatik-mannheim/cblocks-vibration-motor.git && cd cblocks-vibration-motor`
 
 If you installed Platfrom IO on the CLI you can run `pio run -t upload` to upload the code to the cBlock. Otherwise follow the instructions for your IDE to upload the code. The cBlock won't work yet, because it needs at least the Bridge component to function.
 
@@ -125,7 +125,7 @@ Sometimes Kura does not work properly. SSH onto the Pi and run `sudo service kur
 
 ### Backend
 
-In this part we will set up the backend on your local desktop computer. Since the backend is completely dockerized, you should first intall Docker. Clone the backend repo via `git clone git@github.com:weckbach/cblocks-backend.git && cd cblocks-backend`. Copy or symlink the docker-compose config via `cp docker-compose.example.yml docker-compose.yml` or  `ln -s docker-compose.example.yml docker-compose.yml`. The compose file includes MongoDB for storing the data and Apache Mosquitto as the MQTT broker. Simply run `docker-compose up` (optionally -d to run in background") to start the backend and all the services needed.
+In this part we will set up the backend on your local desktop computer. Since the backend is completely dockerized, you should first intall Docker. Clone the backend repo via `git clone git@github.com:informatik-mannheim/cblocks-backend.git && cd cblocks-backend`. Copy or symlink the docker-compose config via `cp docker-compose.example.yml docker-compose.yml` or  `ln -s docker-compose.example.yml docker-compose.yml`. The compose file includes MongoDB for storing the data and Apache Mosquitto as the MQTT broker. Simply run `docker-compose up` (optionally -d to run in background") to start the backend and all the services needed.
 
 Since the Pi bridges all the MQTT traffic to your local MQTT broker you should see all the messages by running `mosquitto_sub -t '#' -v`. By now no messages should occur, since the cBlock is not conntected to the WiFi.
 
@@ -145,4 +145,4 @@ You can turn on the cBlock by pressing the left push button on the board (if the
 
 #TODO Visualizer part
 
-Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/weckbach/cblocks-backend/wiki/Real-time). Run `mosquitto_pub -t 'myClient/3307/0/0/input' -m '{"data": 100}'` to turn the motor to 100%.
+Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/informatik-mannheim/cblocks-backend/wiki/Real-time). Run `mosquitto_pub -t 'myClient/3307/0/0/input' -m '{"data": 100}'` to turn the motor to 100%.
