@@ -85,7 +85,7 @@ The proto hat with the vibration circuit on it, looks like this: ![Vibration pro
 
 #### Casing (optional)
 
-This step is optional, but gives your cBlock a more finished look. We use a laser cutter to do the casing. Here is the corresponding SVG file(TODO Link) for the vibration motor. This is how the final vibration motor cBlock looks like:
+This step is optional, but gives your cBlock a more finished look. We use a laser cutter to do the casing. Here is the corresponding [SVG file](https://github.com/weckbach/cblocks-vibration-motor/blob/master/caseplans.svg) for the vibration motor. This is how the final vibration motor cBlock looks like:
 
 Finally, the fully assembled cBlock looks like follows: ![Vibration cBlock](pictures/vibration.JPG "Vibration cBlock")
 
