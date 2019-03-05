@@ -1,6 +1,6 @@
 # cBlocks
 
-![cBlocks](https://github.com/weckbach/cblocks/blob/master/pictures/vibration_and_button.JPG "cBlocks")
+![cBlocks](pictures/vibration_and_button.JPG "cBlocks")
 
 cBlocks is a tool that empowers non-experts such as designers or electronics beginners to prototype the Internet of Things(IoT). Prototyping early ideas in the context of the Internet of Things is difficult. Building functional prototypes requires
 advanced knowledge in technologies like Internet connectivity, sensor hardware and low level programming. At the same time evaluating the user experience of early concepts is extreme valuable because best practices in design are missing for this emerging and rather unexplored design space. With our system we provide a rapid prototyping tool for Internet of Things applications that is tailored to the needs of non-expert users. We encapsulate hardware details and facilitate easy Internet connections. At the same time our system is open source and therefore ready to be used and extended by the DIY community.
@@ -25,7 +25,7 @@ In this section we will explain how to build a vibration motor cBlock and how to
 
 First of all lets introduce the cBlocks architecture. This will help you in understanding the individual building blocks of the system.
 
-![cBlocks architecture](https://github.com/weckbach/cblocks/blob/master/pictures/architecture.png "cBlocks architecture")
+![cBlocks architecture](pictures/architecture.png "cBlocks architecture")
 
 #### cBlocks
 These are the core building blocks used to sense and control the physical world. E.g. a temperature sensor, a button or a vibration motor.
@@ -64,7 +64,7 @@ In order to get started with cblocks we first have to build the board. The cBloc
 
 Once you have the board and all the parts you can start soldering it. The soldering ist pretty tough because it includes small SMDs, so you should have some advanced soldering skills.
 
-Here is how the cBlocks board looks withouth the ESP32 ![cBlocks board](https://github.com/weckbach/cblocks/blob/master/pictures/cblocks_board.JPG "cBlocks board"). Next, here is how it looks like with the ESP32 soldered on top of it. ![cBlocks board with ESP](https://github.com/weckbach/cblocks/blob/master/pictures/cblocks_board_esp.JPG "cBlocks board with ESP")
+Here is how the cBlocks board looks withouth the ESP32 ![cBlocks board](pictures/cblocks_board.JPG "cBlocks board"). Next, here is how it looks like with the ESP32 soldered on top of it. ![cBlocks board with ESP](pictures/cblocks_board_esp.JPG "cBlocks board with ESP")
 
 #### cBlocks Protoboard
 In addition to the cBlock board there is also a cBlocks protoboard. It is a shield stacked on top of the cBlock board that has some labeled pin outs. It makes prototyping a little easier, so feel free to order that board as well.
@@ -81,13 +81,13 @@ For the vibration motor cicuit you need the [Vibrating Mini Motor Disc](https://
 
 Here is a photo of the final hook up:
 
-The proto hat with the vibration circuit on it, looks like this: ![Vibration proto hat](https://github.com/weckbach/cblocks/blob/master/pictures/vibration_proto_hat.JPG "Vibration proto hat")
+The proto hat with the vibration circuit on it, looks like this: ![Vibration proto hat](pictures/vibration_proto_hat.JPG "Vibration proto hat")
 
 #### Casing (optional)
 
 This step is optional, but gives your cBlock a more finished look. We use a laser cutter to do the casing. Here is the corresponding SVG file(TODO Link) for the vibration motor. This is how the final vibration motor cBlock looks like:
 
-Finally, the fully assembled cBlock looks like follows: ![Vibration cBlock](https://github.com/weckbach/cblocks/blob/master/pictures/vibration.JPG "Vibration cBlock")
+Finally, the fully assembled cBlock looks like follows: ![Vibration cBlock](pictures/vibration.JPG "Vibration cBlock")
 
 #### Arduino SDK
 
