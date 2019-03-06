@@ -105,23 +105,51 @@ The cBlocks Bridge has several functions:
 - Provides pairing mechanism that makes configuration of cBlocks super easy.
 
 #### Hardware
-The hard of the Bridge is a [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/). It has ethernet and WiFi and can be used as a low budget Wireless Access Point with [Apache Kura](https://www.eclipse.org/kura/). For the Audio Pairing you need an active speaker. Unfortunately we haven't developed a version with a button yet, so the pairing has to be triggered via the console. We wrote an audio broadcast protocol called [AstroMech](https://github.com/weckbach/AstroMech) for cBlocks. Feel free to write a little script, that uses a button to trigger the pairing. Please refer to the this [script](https://raw.githubusercontent.com/weckbach/AstroMech/master/RaspberryPi/main.py) in the AstroMech repository, it documents how to make AstroMech compliant sounds. Connect the speaker via cinch to the Rasperry Pi and you are set. 
+The heart of the Bridge is a [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/). It has ethernet and WiFi and can be used as a low budget Wireless Access Point with [Eclipse Kura](https://www.eclipse.org/kura/). For the Audio Pairing you need an active speaker and a momentary push button. We wrote an audio broadcast protocol called [AstroMech](https://github.com/weckbach/AstroMech) for cBlocks. 
 
-#### Install Raspbian Image
+#### Install Raspbian via NOOBS
 
-To make the set up of the Bridge as easy as possible we provide Raspbian image(TODO Link) that includes all dependencies. Please download and install it on a SD card. You can use Etcher to write the image on the SD Card. Here are the [instuctions](https://www.raspberrypi.org/documentation/installation/installing-images/) of the official Raspberry documentation. After inserting the SD card into the Raspberry Pi, it is ready to start.
+Please refer to this official [guide](https://www.raspberrypi.org/documentation/installation/noobs.md) on how to install Raspbian 4.14 via NOOBS. 
+
+### Install Kura 4.0.0
+
+Please follow this guide to install Eclipse Kura https://eclipse.github.io/kura/intro/raspberry-pi-quick-start.html. This will turn the Raspberry Pi into a WiFi Access Point.
 
 #### Network configuration
 
-Once the Raspberry Pi is started you should see a new wireless networks called `cblocks-gateway`. The default password is `admin`. To configure the WiFi password go to the web page http://172.16.1.1/kura. The credentils are again `admin:admin`. Go to `networks -> wlan0 -> wireless`, here you can change the password. If you can't reach the web page please refer to the troubleshooting section.
+Once Kura is up and running the firewall and wlan settings has to be changed. Since the bridge hosts a MQTT bridge we have to open TCP ports 1883 and 1884. Open the Kura UI via the browser http://172.16.1.1/kura. The credentials are "admin:admin". Under *firewall* add an entry "1883:1884" for TCP.
 
-After connecting to the network you can SSH onto the Pi via `ssh pi@172.16.1.1`. The password is again `admin`.
+Now it is time to configure the WiFi. Under `Ǹetwork -> wlan0 -> Wireless` set the Network Name to "cblocks-gateway" and also choose a password. Hit "apply" to apply the changes. Connect to the new WiFi Access Point with your PC.
 
-Now we have to configure the MQTT Bridge. Since we will use our desktop machine to host the backend, paste your IP address into the bridge config. Run `nano /etc/mosquitto/conf.d/bridge.conf` and exchange the IP address with yours. In linux systems you can find your IP adress by running `ifconfig`. Restart mosquitto by running `sudo service mosquitto restart`. Note in a production environment the Backend would be hosted on a public accessible server in the Internet. 
+Next we have to configure the MQTT Bridge. Run `nano /etc/mosquitto/conf.d/cblocks.conf` and paste the following:
 
-#### Troubleshooting
+```
+connection bridge-01
+address <broker-ip>:1883
 
-Sometimes Kura does not work properly. SSH onto the Pi and run `sudo service kura restart`. After a while the service should be working and the Kura web page should be reachable again.
+topic # both 0
+
+listener 1883
+listener 1884
+protocol websockets
+```
+
+Since we will use our desktop machine to host the backend, replace `<broker-ip>` with the IP of your machine. In linux systems you can find your IP adress by running `ifconfig`. Restart mosquitto by running `sudo service mosquitto restart`. Note in a production environment the Backend would be hosted on a public accessible server in the Internet.
+
+#### Set up pairing
+
+Connect an active speaker to the cinch connector of your raspberry pi. Also connect a momentary push button to GPIO 14 and GND of the Pi. To install the pairing script run the following on the console:
+
+```
+cd && mkdir cblocks && cd cblocks
+wget https://raw.githubusercontent.com/weckbach/AstroMech/master/RaspberryPi/main.py
+sudo apt install sox
+pip install reedsolo
+
+python pairing.py "cblocks-gateway;<password>"
+```
+
+Now when pressing the push button, the speaker should emit a sound, encoding the WiFi credentials.
 
 ### Backend
 
@@ -141,7 +169,7 @@ In this section we will actually use our new cBlock by controlling it via the Vi
 2. Pair the cBlock
 3. Control it via the Visualizer / MQTT
 
-You can turn on the cBlock by pressing the left push button on the board (if the LED does not turn on, try holding the power button a little longer). The cBlock will now turn on and attempt to connect to the network. Since no credentials are provided yet, the LED will turn red, indicating that connecting failed. Press the right button to put the cBlock into pairing mode. The LED should turn blue. Now hold the microphone of the cBlock in front of the speaker of the Bridge (Raspberry Pi). To start the pairing SSH onto the Pi and run `cd && python cblocks/pairing.py 'cblocks-gateway;admin'` (Note: If you changed the WiFi password, exchange admin with your password). After pairing the LED should yellow (connecting) and then green (connected). 
+You can turn on the cBlock by pressing the left push button on the board (if the LED does not turn on, try holding the power button a little longer). The cBlock will now turn on and attempt to connect to the network. Since no credentials are provided yet, the LED will turn red, indicating that connecting failed. Press the right button to put the cBlock into pairing mode. The LED should turn blue. Now hold the microphone of the cBlock in front of the speaker of the Bridge (Raspberry Pi). Emit the pairing sound by pressing the push button connected to the Raspberry Pi. After pairing the LED should turn yellow (connecting) and then green (connected). 
 
 #TODO Visualizer part
 
