@@ -175,4 +175,12 @@ You can turn on the cBlock by pressing the left push button on the board (if the
 
 Once the cBlock is connected to the Bridge it will automatically be displayed on the Visualizer. A physical cBlock is visually represented by a floating card. In the screenshot below you can see the Visualizer while two cBlocks are turned on and connected. 
 
+![Visualizer Explained](pictures/Visualizer_explanation.png "Visualizer Explained")
+
+The left card represents an LED stripe which is an actuator. Therefore it needs means to control it's resources. In the case of an LED there is the 'On/Off' resource (1) - which you can trigger by clicking the switch input - and the Color. You can experiment and change the color of the LEDs by moving the sliders (2), each of which represents one color value (Red, Green and Blue).
+
+The card in the middle represents a temperature and humidity sensor. It has no actions it can perform - it senses it's environment and the resulting data is displayed in real time (e.g. 3). Historical data can be seen by opening the corresponding graph button (4). If you click on the button with the arrow (5) the 'Mapping Drawer' (6) is opened. In this example there is only one mapping on the 'Current Temperature' resource of the sensor. You can see the name of the mapping (7) and it's current value (8) in the drawer. On the sensor bar above (9) the current mapping's value ranges are represented by different colors on the bar. E.g. You declared the 'Ideal Temperature' for your use case to be between 29 and 31 degrees Celsius. The range between 32 and 33 degrees could be named 'Slightly Hot' while everything above that is 'Too Hot'. This allows for a more natural language when working with sensor values.
+
+Our Vibration cBlock from before is an actuator cBlock with only one resource: 'On/Off'. This means it's representation in the Visualizer would only have a toggleable switch. Activating it would turn the vibration on or off.
+
 Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/informatik-mannheim/cblocks-backend/wiki/Real-time). Run `mosquitto_pub -t 'myClient/3307/0/0/input' -m '{"data": 100}'` to turn the motor to 100%.
