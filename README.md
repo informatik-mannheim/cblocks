@@ -64,7 +64,7 @@ In order to get started with cblocks we first have to build the board. The cBloc
 
 Once you have the board and all the parts you can start soldering it. The soldering ist pretty tough because it includes small SMDs, so you should have some advanced soldering skills.
 
-Here is how the cBlocks board looks withouth the ESP32 ![cBlocks board](pictures/cblocks_board.JPG "cBlocks board"). Next, here is how it looks like with the ESP32 soldered on top of it. ![cBlocks board with ESP](pictures/cblocks_board_esp.JPG "cBlocks board with ESP")
+Here is how the cBlocks board looks withouth the ESP32. ![cBlocks board](pictures/cblocks_board.JPG "cBlocks board") Next, here is how it looks like with the ESP32 soldered on top of it. ![cBlocks board with ESP](pictures/cblocks_board_esp.JPG "cBlocks board with ESP")
 
 #### cBlocks Protoboard
 In addition to the cBlock board there is also a cBlocks protoboard. It is a shield stacked on top of the cBlock board that has some labeled pin outs. It makes prototyping a little easier, so feel free to order that board as well.
