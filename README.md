@@ -159,6 +159,10 @@ Run `docker-compose exec app node src/mongo_bootstrap.js` to create all registry
 
 ### Visualizer
 
+To install the visualization component of cBlocks follow the instructions in the [Visualizer repository](https://github.com/informatik-mannheim/cblocks-visualizer). After completing the installation process open the Visualizer in your browser. If everything went right you will see a page with a headerbar and an empty dark dashboard. Now you will need to configure the endpoints the Visualizer is supposed to talk to.
+
+Click on the hamburger menu in the top left corner and choose 'Urls'. Enter the appropriate URLs in the two fields and click 'SET URLS'. The Visualizer is now ready to go.
+
 ## Usage
 
 In this section we will actually use our new cBlock by controlling it via the Visualizer. Using the cBlock will involve the following steps:
@@ -169,6 +173,6 @@ In this section we will actually use our new cBlock by controlling it via the Vi
 
 You can turn on the cBlock by pressing the left push button on the board (if the LED does not turn on, try holding the power button a little longer). The cBlock will now turn on and attempt to connect to the network. Since no credentials are provided yet, the LED will turn red, indicating that connecting failed. Press the right button to put the cBlock into pairing mode. The LED should turn blue. Now hold the microphone of the cBlock in front of the speaker of the Bridge (Raspberry Pi). Emit the pairing sound by pressing the push button connected to the Raspberry Pi. After pairing the LED should turn yellow (connecting) and then green (connected). 
 
-#TODO Visualizer part
+Once the cBlock is connected to the Bridge it will automatically be displayed on the Visualizer. 
 
 Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/informatik-mannheim/cblocks-backend/wiki/Real-time). Run `mosquitto_pub -t 'myClient/3307/0/0/input' -m '{"data": 100}'` to turn the motor to 100%.
