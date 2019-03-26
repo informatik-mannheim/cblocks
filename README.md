@@ -48,6 +48,9 @@ RGB-LED, the Backend must check if the request has the correct format and respon
 #### MQTT broker
 The MQTT broker is used as a message bus, exchanging real-time sensor readings and actuator commands to and from the cBlocks. The MQTT Broker provides the means to connect any third-party software to the system, since it is an established standard in the IoT field.
 
+#### IFTTT Integration
+We also developed an [IFTTT](https://ifttt.com/) integration. IFTTT is a cloud service that allows you to connect services by simple rules. For example, you can control your cBlock with Google Assistant. The integration is in a prototypical state and thus not available online. Also we won't cover it in this workshop. But we have a SWAGGER JSON that documents the cBlocks IFTTT Service that you can download [here](https://raw.githubusercontent.com/informatik-mannheim/cblocks-backend/master/ifttt-swagger.json).
+
 ### Make a cBlock 
 
 Now, let's actually make our first cBlock.
