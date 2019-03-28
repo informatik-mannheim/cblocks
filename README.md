@@ -189,4 +189,6 @@ Our Vibration cBlock from before is an actuator cBlock with only one resource: '
 Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/informatik-mannheim/cblocks-backend/wiki/Real-time). Run `mosquitto_pub -t 'myClient/3307/0/0/input' -m '{"data": 100}'` to turn the motor to 100%.
 
 cBlocks was developed as part of the ProFI research project funded by the German Federal Ministry of Education and Research (BMBF).
-![BMBF Logo](pictures/bmbf_logo.jpg "BMBF")
+
+
+<img src="pictures/bmbf_logo.jpg" alt="BMBF Logo" width="300"/>
