@@ -187,3 +187,6 @@ The card in the middle represents a temperature and humidity sensor. It has no a
 Our Vibration cBlock from before is an actuator cBlock with only one resource: 'On/Off'. This means it's representation in the Visualizer would only have a toggleable switch. Activating it would turn the vibration on or off.
 
 Alternatively you can read sensor data and control cBlocks via MQTT. The topic structure is described [here](https://github.com/informatik-mannheim/cblocks-backend/wiki/Real-time). Run `mosquitto_pub -t 'myClient/3307/0/0/input' -m '{"data": 100}'` to turn the motor to 100%.
+
+cBlocks was developed as part of the ProFI research project funded by the German Federal Ministry of Education and Research (BMBF).
+![BMBF Logo](pictures/bmbf_logo.jpg "BMBF")
